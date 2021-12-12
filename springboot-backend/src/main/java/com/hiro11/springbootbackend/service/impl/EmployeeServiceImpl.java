@@ -1,5 +1,6 @@
 package com.hiro11.springbootbackend.service.impl;
 
+import com.hiro11.springbootbackend.exception.ResourceNotFoundException;
 import com.hiro11.springbootbackend.model.Employee;
 import com.hiro11.springbootbackend.repository.EmployeeRepository;
 import com.hiro11.springbootbackend.service.EmployeeService;
@@ -25,5 +26,17 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
+    }
+
+    @Override
+    public Employee getEmployeeById(long id) {
+//		Optional<Employee> employee = employeeRepository.findById(id);
+//		if(employee.isPresent()) {
+//			return employee.get();
+//		}else {
+//			throw new ResourceNotFoundException("Employee", "Id", id);
+//		}
+        return employeeRepository.findById(id).orElseThrow(() ->
+                new ResourceNotFoundException("Employee", "Id", id));
     }
 }
