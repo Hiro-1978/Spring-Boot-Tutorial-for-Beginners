@@ -44,7 +44,7 @@ public class StudentController {
         model.addAttribute("student", studentService.getStudentById(id));
         return "edit_student";
     }
-    
+
     @PostMapping("/students/{id}")
     public String updateStudent(@PathVariable Long id,
            @ModelAttribute("student") Student student,
@@ -62,4 +62,10 @@ public class StudentController {
         return "redirect:/students";
     }
 
+    // handler method to handle delete student request
+    @GetMapping("/students/{id}")
+    public String deleteStudent(@PathVariable Long id) {
+        studentService.deleteStudentById(id);
+        return "redirect:/students";
+    }
 }
