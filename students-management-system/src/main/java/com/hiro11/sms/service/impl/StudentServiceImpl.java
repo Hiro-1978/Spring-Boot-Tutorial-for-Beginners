@@ -16,14 +16,20 @@ public class StudentServiceImpl implements StudentService {
         super(); //ไม่ต้องมีก็ได้
         this.studentRepository = studentRepository;
     }
-
     @Override
     public List<Student> getAllStudents() {
         return studentRepository.findAll();
     }
-
     @Override
     public Student saveStudents(Student student) {
+        return studentRepository.save(student);
+    }
+    @Override
+    public Student getStudentById(Long id) {
+        return studentRepository.getById(id);
+    }
+    @Override
+    public Student updateStudent(Student student) {
         return studentRepository.save(student);
     }
 }
