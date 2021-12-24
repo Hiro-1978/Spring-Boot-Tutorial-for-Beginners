@@ -22,7 +22,7 @@ public class Student {
     public Student(){
 
     }
-
+	// ถ้าใช้ Lambok ไม่ต้องมีทั้ง Constructor และ Getter and Setter
     public Student(String firstName, String lastName, String email) {
         super();
         this.firstName = firstName;
